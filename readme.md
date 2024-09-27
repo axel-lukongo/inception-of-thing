@@ -30,7 +30,8 @@ and this two machine should be connected
 ### Steps 
 1. [Download K3s on a VM](#download-k3s-on-a-vm)
 2. [Deploy 3 Web Applications](#deploy-3-web-applications)
-3. [Configure Ingress for Host-Based Routing](#configure-ingress-for-host-based routing)
+3. [Configure Ingress for Host-Based Routing](#configure-ingress-for-based-routing)
+
 4. [Create Multiple Replicas for Application 2](#create-multiple-replicas-for-application-2)
 5. [Configure /etc/hosts for Simulating Domain Resolution](#configure-etchosts-for-simulating-domain-resolution)
 

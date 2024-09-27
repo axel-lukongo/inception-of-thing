@@ -41,7 +41,7 @@ and this two machine should be connected
 - K3s is a simplified version of Kubernetes. we need to install it on a virtual machine with a dedicated IP (192.168.56.110).
 - This VM will act as the control plane (master node) for the cluster.
 
-### Déploy 3 web applications
+### Deploy 3 web applications
 - We need to deploy three web applications on your K3s cluster. These can be simple web servers like Nginx containers or custom applications built in Docker images.
 - For each application, create a Deployment and a Service in Kubernetes.
 

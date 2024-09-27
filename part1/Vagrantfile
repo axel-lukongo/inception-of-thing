@@ -1,4 +1,4 @@
-K3S_TOKEN="my_super_secret_token"
+K3S_TOKEN="my-Iot-token"
 
 Vagrant.configure("2") do |config|
   # Configuration de la première machine (alukongoS)

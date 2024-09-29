@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: app1
-        image: paulbouwer/hello-kubernetes:1.10
+        image: arm64v8/nginx
         ports:
         - containerPort: 80
 ---
@@ -27,7 +27,7 @@ spec:
   selector:
     app: app1
   ports:
-    - protocol: TCP
-      port: 80
+    - port: 80
       targetPort: 80
-  type: ClusterIP
+      nodePort: 30001  # Choisir un port dans la plage 30000-32767
+  type: NodePort

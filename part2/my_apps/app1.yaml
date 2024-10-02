@@ -1,4 +1,3 @@
-# app1.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -22,12 +21,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: app1-service
+  name: app1
 spec:
   selector:
     app: app1
   ports:
-    - port: 80
+    - protocol: TCP
+      port: 80
       targetPort: 80
-      nodePort: 30001  # Choisir un port dans la plage 30000-32767
-  type: NodePort
+  type: ClusterIP

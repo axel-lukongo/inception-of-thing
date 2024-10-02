@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: app2
-        image: arm64v8/nginx
+        image: wordpress
         ports:
         - containerPort: 80
 ---
@@ -28,6 +28,5 @@ spec:
   ports:
     - port: 80
       targetPort: 80
-      nodePort: 30002  # Choisir un port dans la plage 30000-32767
-  type: NodePort
+  type: ClusterIP
 

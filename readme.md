@@ -1,4 +1,3 @@
-<img width="722" alt="Capture d’écran 2024-10-03 à 17 47 40" src="https://github.com/user-attachments/assets/4ea05861-77fd-4cbc-82ea-6747328f66c6">
 # Inception Of Things
 
 This project aims to deepen your DevOps knowledge by using k3s (kubernetes)

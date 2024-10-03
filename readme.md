@@ -1,4 +1,4 @@
-
+<img width="722" alt="Capture d’écran 2024-10-03 à 17 47 40" src="https://github.com/user-attachments/assets/4ea05861-77fd-4cbc-82ea-6747328f66c6">
 # Inception Of Things
 
 This project aims to deepen your DevOps knowledge by using k3s (kubernetes)
@@ -61,3 +61,5 @@ and this two machine should be connected
 
 ### Configure /etc/hosts for Simulating Domain Resolution
 - Since you're working in a local environment, you need to configure your local /etc/hosts file to map domain names (e.g., app1.com, app2.com) to your server's IP (192.168.56.110).
+
+<img width="722" alt="Capture d’écran 2024-10-03 à 17 47 40" src="https://github.com/user-attachments/assets/387e3bfa-c331-426e-9286-f1ae6219b57f">

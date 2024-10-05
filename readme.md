@@ -62,3 +62,58 @@ and this two machine should be connected
 - Since you're working in a local environment, you need to configure your local /etc/hosts file to map domain names (e.g., app1.com, app2.com) to your server's IP (192.168.56.110).
 
 <img width="722" alt="Capture d’écran 2024-10-03 à 17 47 40" src="https://github.com/user-attachments/assets/387e3bfa-c331-426e-9286-f1ae6219b57f">
+
+
+
+## PART 3
+The goal of this part of the project is to implement continuous integration (CI) using K3D and Argo CD.
+we will automate deployments and manage application versions through GitOps, ensuring that the application stays up-to-date with the latest changes pushed to our GitHub repository.
+
+
+#### Difference between k3s and k3d:
+- K3S: is a lightweight version of Kubernetes designed for resource-constrained environments.
+
+- K3D: is a version of K3S that runs within Docker containers, making it easier to create local Kubernetes clusters.
+
+#### Argo CD:
+Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes. It automates the deployment and management of applications in Kubernetes clusters by continuously monitoring Git repositories for changes and syncing them with our Kubernetes environment.
+
+### Steps
+
+1) [installation](#installation)
+2) [Create a K3D Cluster](#Create-a-K3D-Cluster)
+3)  [Access the Argo CD UI](#Access-the-Argo-CD-UI)
+4)  [Configure Argo CD to Deploy an Application](#Configure-Argo-CD-to-Deploy-an-Application)
+5) [Deploy the Application Using Argo CD](#Deploy-the-Application-Using-Argo-CD)
+6) [Manage Application Versions](#Manage-Application-Versions)
+
+### installation
+we have to install 
+- docker 
+- k3d
+- Argo CD
+- kubectl
+we should also create a bash script to automate the installation
+### Create a K3D Cluster
+Now, create a K3D Kubernetes cluster that Argo CD will use.
+### Access the Argo CD UI
+Forward the Argo CD API server to our localhost (Use the default Argo CD login)
+
+- Username: admin
+- Password: Get the initial password use 
+-       kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
+
+### Configure Argo CD to Deploy an Application
+Create a second namespace for our application:
+-       kubectl create namespace dev
+
+- Push our Kubernetes deployment configuration to a public GitHub repository.
+- Inside Argo CD, link the GitHub repository so that Argo CD can track and sync our application's deployment.
+### Deploy the Application Using Argo CD
+- In Argo CD's UI, create a new application and point it to our GitHub repository that contains the deployment.yaml file
+- Define the dev namespace as the target for this deployment.
+- Sync the application, and it will deploy automatically to our K3D cluster.
+### Manage Application Versions
+- To implement continuous integration, we have to create two versions of our application and tag them in Dockerhub (e.g., v1 and v2).
+- Update the deployment.yaml in our GitHub repository with the new image tag (e.g., wil42/playground:v1 to wil42/playground:v2).
+- Push the change to GitHub, and Argo CD will automatically detect and update the application.

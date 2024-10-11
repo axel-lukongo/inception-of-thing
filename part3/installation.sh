@@ -15,6 +15,9 @@ sudo apt install -y kubectl
 
 # Install Argo CD
 kubectl create namespace argocd
+kubectl create namespace dev
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 echo "Installation complete. Use 'kubectl port-forward svc/argocd-server -n argocd 8080:443' to access the Argo CD UI."
+
+echo "to get the password use: kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="'{.data.password}'" | base64 --decode."

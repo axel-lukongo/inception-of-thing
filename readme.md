@@ -117,3 +117,6 @@ Create a second namespace for our application:
 - To implement continuous integration, we have to create two versions of our application and tag them in Dockerhub (e.g., v1 and v2).
 - Update the deployment.yaml in our GitHub repository with the new image tag (e.g., wil42/playground:v1 to wil42/playground:v2).
 - Push the change to GitHub, and Argo CD will automatically detect and update the application.
+
+Don't forget to mapped the port of your application with a port from your local machine,
+k3d is the same version as k3s but the difference is that k3d run in a docker container, that mean when i used the nodeport service for my app, it will be accessible only from my container because: nodeport allow the acces to our pods outside the cluster, but outside the cluster there is our container that mean i was abble to acces to my app only from my container, so to bypass that i mapped a specific port from my container to my local machine and i use this port for my app.

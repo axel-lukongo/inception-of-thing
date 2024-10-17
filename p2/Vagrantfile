@@ -1,0 +1,30 @@
+K3S_TOKEN="my-Iot-token"
+
+Vagrant.configure("2") do |config|
+  # Configuration de la première machine (alukongoS)
+  config.vm.define "alukongoS" do |server|
+    server.vm.box = "ubuntu/jammy64"  # Utilisez une distribution Ubuntu stable
+    server.vm.hostname = "alukongoS"
+    server.vm.network "private_network", ip: "192.168.56.110"
+    server.vm.provider "virtualbox" do |vb|
+      vb.name = "alukongoS"
+      vb.memory = "1024"  # Limiter la RAM à 1024 MB
+      vb.cpus = 1        # Limiter à 1 CPU
+    end
+    server.vm.synced_folder "my_apps", "/vagrant/my_apps"  # Synchroniser le dossier my_apps
+
+	server.vm.provision "shell", inline: <<-SHELL
+      sudo apt-get update
+      sudo apt-get install -y curl
+      # Installation de K3s en mode serveur
+      curl -sfL https://get.k3s.io | K3S_TOKEN=#{K3S_TOKEN} sh -
+	  sudo chmod 777 /etc/rancher/k3s/k3s.yaml
+	  sudo apt install net-tools
+    SHELL
+
+
+	server.vm.provision "shell", privileged: false, inline: <<-SHELL
+	kubectl apply --recursive -f /vagrant/my_apps/
+  	SHELL
+  end
+end

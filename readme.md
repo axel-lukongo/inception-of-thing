@@ -1,6 +1,6 @@
 # Inception Of Things
 
-This project aims to deepen your DevOps knowledge by using k3s (kubernetes)
+This project aims to deepen my DevOps knowledge by using k3s and k3d (kubernetes)
 we have 3 part in this project and the first two part allow us to understand vagrant and to know some configuration of k3s (installation)
 
 ### What is kubernetes
